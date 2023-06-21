@@ -1,4 +1,4 @@
-package uk.co.atomicmedia.developertest
+package uk.co.atomicmedia.developertest.data
 
 import uk.co.atomicmedia.developertest.data.api.dto.StoryDto
 import java.time.Instant
