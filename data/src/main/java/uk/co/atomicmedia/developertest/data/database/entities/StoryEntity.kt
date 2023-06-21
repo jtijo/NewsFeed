@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import uk.co.atomicmedia.developertest.data.utils.RoomDbConstants.STORY_ENTITY
+import uk.co.atomicmedia.developertest.data.utils.STORY_ENTITY
 
 @Entity(
     tableName = STORY_ENTITY,

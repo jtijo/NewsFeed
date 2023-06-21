@@ -12,6 +12,7 @@ import uk.co.atomicmedia.developertest.data.boundary.DataMapper
 import uk.co.atomicmedia.developertest.data.database.NewsFeedDao
 import uk.co.atomicmedia.developertest.data.database.NewsFeedDatabase
 import uk.co.atomicmedia.developertest.data.repository.NewsRepository
+import uk.co.atomicmedia.developertest.domain.repositorycontracts.DomainNewsRepositoryContract
 import javax.inject.Singleton
 
 @Module
@@ -35,11 +36,10 @@ object DataModule {
         newsFeedDao: NewsFeedDao,
         coroutineNewsApi: CoroutineNewsApi,
         dataMapper: DataMapper
-    ): NewsRepository {
-        return NewsRepository(
-            newsApi = coroutineNewsApi as ICoroutineNewsApi,
-            newsFeedDao = newsFeedDao,
-            mapper = dataMapper
-        )
-    }
+    ): DomainNewsRepositoryContract = NewsRepository(
+        newsApi = coroutineNewsApi as ICoroutineNewsApi,
+        newsFeedDao = newsFeedDao,
+        mapper = dataMapper
+    )
+
 }
