@@ -1,0 +1,100 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'uk.co.atomicmedia.developertest.data'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    packagingOptions {
+        exclude("META-INF/versions/9/previous-compilation-data.bin")
+    }
+    hilt {
+        enableAggregatingTask = true
+    }
+}
+
+dependencies {
+
+    //Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+
+    //KTX
+    implementation "androidx.room:room-ktx:2.5.1"
+
+    implementation 'androidx.security:security-crypto-ktx:1.1.0-alpha06'
+
+    //Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:${hilt_version}"
+    // For local unit tests
+    testImplementation "com.google.dagger:hilt-android-testing:${hilt_version}"
+    kaptTest "com.google.dagger:hilt-compiler:${hilt_version}"
+
+    //RxJava
+    implementation "io.reactivex.rxjava3:rxjava:3.1.5"
+
+    //Room
+    api "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+    implementation "androidx.room:room-ktx:$room_version"
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+
+    //Sqlite Cipher
+    implementation "net.zetetic:android-database-sqlcipher:4.5.3"
+    implementation "androidx.sqlite:sqlite:2.3.1"
+
+
+    //Clean Architecture Modules
+    implementation project(":domain")
+
+    //Testing
+
+    // mocking test frameworks
+    testImplementation "org.mockito:mockito-core:4.0.0"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    testImplementation "io.mockk:mockk:1.13.5"
+
+    //Coroutine test frameworks
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test-jvm:$coroutine_version"
+
+    // Hilt - For local unit tests
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
+
+    testImplementation 'junit:junit:4.13.2'
+}
