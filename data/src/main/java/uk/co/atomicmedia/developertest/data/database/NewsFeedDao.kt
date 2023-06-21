@@ -3,8 +3,8 @@ package uk.co.atomicmedia.developertest.data.database
 import androidx.room.*
 import uk.co.atomicmedia.developertest.data.database.entities.HeadlineEntity
 import uk.co.atomicmedia.developertest.data.database.entities.StoryEntity
-import uk.co.atomicmedia.developertest.data.utils.RoomDbConstants.HEADLINE_ENTITY
-import uk.co.atomicmedia.developertest.data.utils.RoomDbConstants.STORY_ENTITY
+import uk.co.atomicmedia.developertest.data.utils.HEADLINE_ENTITY
+import uk.co.atomicmedia.developertest.data.utils.STORY_ENTITY
 
 @Dao
 interface NewsFeedDao {

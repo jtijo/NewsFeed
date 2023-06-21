@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import uk.co.atomicmedia.developertest.data.database.entities.HeadlineEntity
 import uk.co.atomicmedia.developertest.data.database.entities.StoryEntity
-import uk.co.atomicmedia.developertest.data.utils.RoomDbConstants.ROOM_DATABASE_NAME
+import uk.co.atomicmedia.developertest.data.utils.ROOM_DATABASE_NAME
 
 @Database(entities = [StoryEntity::class, HeadlineEntity::class], version = 1, exportSchema = false)
 abstract class NewsFeedDatabase : RoomDatabase() {
