@@ -1,9 +1,9 @@
-# AtomicMedia - Android Developer Tes
+# AtomicMedia - Android Developer Test
 
 # NewsFeedApp
 
-This Android app was created as part of a technical test for a job opportunity and is a demo showing
-`MVI (Model-View-Intent)`, `Test Driven Development (TDD)` and `Clean architecture` layering
+This Android app was created as part of a technical test for a job opportunity and is 
+a demo showing `MVI (Model-View-Intent)`, `Test Driven Development (TDD)` and `Clean architecture` layering
 principles,
 using Kotlin Coroutines and Flow to manage reactive streams. The App supports both Phones and
 Tablets (also portrait and landscape orientation)
