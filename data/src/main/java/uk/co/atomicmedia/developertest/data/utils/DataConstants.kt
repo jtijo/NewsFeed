@@ -23,7 +23,7 @@ const val ERROR_MSG = "Something went wrong. Please try again."
 
 fun Instant.convertToDateString(): String {
     val date = Date.from(this)
-    val formatter = SimpleDateFormat("dd MM,yyyy HH:mm")
+    val formatter = SimpleDateFormat("dd MMM, yyyy HH:mm")
     return formatter.format(date)
 }
 
