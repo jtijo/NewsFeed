@@ -1,11 +1,11 @@
 package uk.co.atomicmedia.developertest.data.api.rxjava
 
 import io.reactivex.rxjava3.core.Single
-import uk.co.atomicmedia.developertest.HAS_CONNECTION
 import uk.co.atomicmedia.developertest.data.api.ApiException
 import uk.co.atomicmedia.developertest.data.api.dto.StoryDto
 import uk.co.atomicmedia.developertest.data.api.dto.HeadlineDto
-import uk.co.atomicmedia.developertest.mockStories
+import uk.co.atomicmedia.developertest.data.utils.HAS_CONNECTION
+import uk.co.atomicmedia.developertest.data.utils.mockStories
 import java.util.concurrent.TimeUnit
 
 class RxJavaNewsApi : IRxJavaNewsApi {

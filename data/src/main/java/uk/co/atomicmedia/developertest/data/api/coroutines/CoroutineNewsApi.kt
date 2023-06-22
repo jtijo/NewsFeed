@@ -1,13 +1,15 @@
 package uk.co.atomicmedia.developertest.data.api.coroutines
 
 import kotlinx.coroutines.delay
-import uk.co.atomicmedia.developertest.HAS_CONNECTION
 import uk.co.atomicmedia.developertest.data.api.ApiException
 import uk.co.atomicmedia.developertest.data.api.dto.StoryDto
 import uk.co.atomicmedia.developertest.data.api.dto.HeadlineDto
-import uk.co.atomicmedia.developertest.mockStories
+import uk.co.atomicmedia.developertest.data.utils.HAS_CONNECTION
+import uk.co.atomicmedia.developertest.data.utils.mockStories
 
-class CoroutineNewsApi : ICoroutineNewsApi {
+import javax.inject.Inject
+
+class CoroutineNewsApi @Inject constructor(): ICoroutineNewsApi {
 
     override suspend fun getNewsHeadlines(): List<HeadlineDto> {
         delay(500)
