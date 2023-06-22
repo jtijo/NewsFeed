@@ -1,70 +1,99 @@
-Your task is to create a simple news reader application. The app will contain two screens. The first
-will be a list of news article headlines, tapping on one of those headlines will open up the full
-news story.
+# AtomicMedia - Android Developer Tes
 
-The project provides you with a mock API layer (find this in the `data.api` package). This API layer
-contains two methods, `getNewsHeadlines` which will return a list of news headlines,
-and `getNewsStory` which takes an ID for a news headline, and returns the full article.
+# NewsFeedApp
 
-Within the `data.api` package you will see multiple implementations of this API layer, one
-implemented using Kotlin coroutines, one with RxJava3, and a final implementation using callbacks.
-It is up to you which of these implementations you use depending on your experience level, but our
-preference would be for you to use Kotlin Coroutines.
+This Android app was created as part of a technical test for a job opportunity and is a demo showing
+`MVI (Model-View-Intent)`, `Test Driven Development (TDD)` and `Clean architecture` layering
+principles,
+using Kotlin Coroutines and Flow to manage reactive streams. The App supports both Phones and
+Tablets (also portrait and landscape orientation)
 
-There are also two options for the UI Layer, either Jetpack Compose or Fragments with the view
-system. Again it is up to you which you choose, but our preference would be Jetpack Compose. You may
-have to change the AndroidManifest.xml file to point to the new Activity, depending on your choice.
+App contains two screens. Home screen will load all the headlines with minimal information. There is 
+a detailed headline story screen on clicking each headline item.
 
-You may wish to delete any packages you are not using.
+The sample app presents a modern Android application Architecture that is scalable and maintainable
+through a MVI Architecture.
 
-You may use whatever external resources or websites you like to help you, and feel free to import
-3rd party libraries where you see an opportunity to do so. You can also create, modify or delete any
-classes and files within the project that you want to, you're not restricted to only working within
-the given files, they should only be used as a guide/quick start point. The only restriction here is
-please do not modify the files within the `api` package. Feel free to take a look at how they work
-though!
+# Software Architecture
 
-Please spend no more than 1.5 hours on this test. We are not expecting you to finish every task, but
-please be prepared to discuss how you would approach any non-complete tasks.
+The architecture deals with the latest Android architectural patterns (Jetpack) and incorporate
+strong Clean Architecture (Robert C. Martin type) in the software design. Reactive streaming for
+data passing is achieved using a combination Kotlin Coroutines and Kotlin Flow.
 
-When you have finished, please ZIP up the project folder and either email it back to us, or upload
-it somewhere for us to download.
+To that end, the app is modular and employs separate Presentaton/UI feature modules (presentation),
+a repository module to contain data and network requests (data) and Domain module defining entities
+and usecases (domain). In line with Clean Architecture the Domain module is completely platform
+independent and is isolated by the Gradle dependencies which contain no references to the Android
+target platform.
 
-Your tasks are as follows, we recommend you read them all in full before you start the first task.
-Good luck!
+Entity mappers are provided at the boundaries of the Presentation and Repository layers to convert
+data models into entities suitable for each layer and isolating it from changes.
 
-# Task 1
+The Domain specifies repository interfaces, data models and UseCases.
 
-Implement the Headlines Screen. This screen should display a scrollable list of headlines to the
-user. Each item should contain the headline title, and the author's name. The headlines should be
-populated from the API layer on screen load.
+The repository module will cache successful network responses in a Room persistent database,
+allowing for usage offline once the initial data has been populated. 
 
-The screen should also have a loading state, and an error state. The error state can be tested by
-changing `HAS_CONNECTION` to false in `Constants.kt`. You DO NOT need to implement any refreshing
-behaviour or implement any retry on error.
+MVI architecture gives the advantage of Unique State over the app with Unidirectional Data Flow.
 
-It is up to you to define the path the data takes on it's way to the UI. The UI design of the app is
-not important, as long as the content is readable regardless of screen size.
 
-# Task 2
+# Unit Testing
 
-Implement the News Screen. The news screen should show the title, author, content, and the formatted
-published at date.
+Unit testing is performed over `ViewModel` and `Repository` with above 90% test coverage. Performed
+coroutine testing
+with [kotlinx.coroutines.test](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-test/)
+and Kotlin Coroutines use the standard Test Dispatcher method and each ViewModel features injected
+Coroutine Dispatchers for this reason, in line with Google recommendations for Coroutine testing.
+`Mockk` framework used for mock the required classes. Clean separation of layers helped to do the
+unit testing very easy manner. The tests can be inspected in the following files:
 
-Again, this screen should have a loading state and an error state.
+* NewsFeedViewModelTest.kt - ViewModel (presentation module)
+* NewsRepositoryTest.kt - Repository (data module)
 
-# Task 3
 
-Implement dependency injection with Hilt, it is left up to you to decide what is injected and how.
-The project is set up with the Hilt dependencies already.
+# Tech-stack
 
-# Task 4
+This project takes advantage of many popular libraries, plugins and tools of the Android ecosystem.
+Most of the libraries are in the stable version, unless there is a good reason to use non-stable
+dependency.
 
-Implement a Room database to make the app work while offline. Both headlines and stories should be
-stored in the database. The app should use the database as the source of truth. The app should
-refresh the headlines and stories in the database whenever the headlines screen and individual
-stories screens are shown, respectively.
+Mainly on:
 
-Offline mode can be tested by changing `HAS_CONNECTION` to false in `Constants.kt`
+- [Kotlin](https://kotlinlang.org/) - Kotlin is a cross-platform, statically typed, general-purpose
+  programming language with type inference.
 
-The dependencies for Room are already set up in the project.
+## Dependencies
+
+- [Jetpack](https://developer.android.com/jetpack):
+    - [Compose](https://developer.android.com/jetpack/compose?gclid=Cj0KCQjwjryjBhD0ARIsAMLvnF9xwH90WyfKJPyr1b-Qarx5DYo5v3YGxD-FZBoqmx0-NjfQgRI3BfMaAuYZEALw_wcB&gclsrc=aw.ds)
+        - Building declarative UI
+    - [Android KTX](https://developer.android.com/kotlin/ktx.html) - provide concise, idiomatic
+      Kotlin to Jetpack and Android platform APIs.
+    - [AndroidX](https://developer.android.com/jetpack/androidx) - major improvement to the original
+      Android [Support Library](https://developer.android.com/topic/libraries/support-library/index)
+      , which is no longer maintained.
+    - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform
+      actions in response to a change in the lifecycle status of another component, such as
+      activities and fragments.
+    - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - designed
+      to store and manage UI-related data in a lifecycle conscious way. The ViewModel class allows
+      data to survive configuration changes such as screen rotations.
+- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - managing background
+  threads with simplified code and reducing needs for callbacks.
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - dependency
+  injector for replacement all FactoryFactory classes.
+- [Room DB](https://developer.android.com/training/data-storage/room) - storing data for offline
+  working
+
+## Test dependencies
+
+- [Espresso](https://developer.android.com/training/testing/espresso) - to write concise,
+  and reliable Android UI tests
+- [JUnit](https://github.com/junit-team/junit4) - a simple framework to write repeatable tests. It
+  is an instance of the xUnit architecture for unit testing frameworks.
+- [Mockito](https://github.com/nhaarman/mockito-kotlin) - most popular Mocking framework for unit
+  tests written in Java.
+- [Mockk](https://github.com/mockk/mockk) - provides DSL to mock behavior. Built from zero to fit
+  Kotlin language.
+- [Coroutine-test](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-test/) - to
+  write test for the code that uses coroutines
