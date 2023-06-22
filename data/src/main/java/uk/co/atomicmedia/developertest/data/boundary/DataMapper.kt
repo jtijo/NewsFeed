@@ -10,7 +10,6 @@ import uk.co.atomicmedia.developertest.domain.model.DomainStoryModel
 import javax.inject.Inject
 
 class DataMapper @Inject constructor() {
-
     fun mapHeadlineEntity(headlineDto: HeadlineDto): HeadlineEntity {
         return HeadlineEntity(
             _id = headlineDto.id,
@@ -18,7 +17,6 @@ class DataMapper @Inject constructor() {
             author = headlineDto.author
         )
     }
-
     fun mapDomainHeadlineModel(headlineEntity: HeadlineEntity): DomainHeadlineModel {
         return DomainHeadlineModel(
             id = headlineEntity._id,
@@ -26,7 +24,6 @@ class DataMapper @Inject constructor() {
             author = headlineEntity.author
         )
     }
-
     fun mapStoryEntity(storyDto: StoryDto): StoryEntity {
         return StoryEntity(
             headline_id = storyDto.id,
@@ -36,7 +33,6 @@ class DataMapper @Inject constructor() {
             published_date = storyDto.publishedAt.convertToDateString()
         )
     }
-
     fun mapDomainStoryModel(storyEntity: StoryEntity): DomainStoryModel {
         return DomainStoryModel(
             id = storyEntity.headline_id,

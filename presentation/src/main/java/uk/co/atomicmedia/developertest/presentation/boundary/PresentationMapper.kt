@@ -9,7 +9,6 @@ import uk.co.atomicmedia.developertest.presentation.model.PresentationStoryModel
 import javax.inject.Inject
 
 class PresentationMapper @Inject constructor() {
-
     fun mapPresentationHeadlineModel(domainHeadlineModel: DomainHeadlineModel): PresentationHeadlineModel {
         return PresentationHeadlineModel(
             id = domainHeadlineModel.id,
@@ -17,7 +16,6 @@ class PresentationMapper @Inject constructor() {
             author = domainHeadlineModel.author
         )
     }
-
     fun mapPresentationHeadlineStoryModel(domainStoryModel: DomainStoryModel): PresentationStoryModel {
         return PresentationStoryModel(
             id = domainStoryModel.id,
@@ -27,7 +25,6 @@ class PresentationMapper @Inject constructor() {
             publishedDate = domainStoryModel.publishedDate
         )
     }
-
     fun mapPresentationErrorResponse(domainErrorResponse: DomainErrorResponse) : PresentationErrorResponse{
         return PresentationErrorResponse(
             errorMessage = domainErrorResponse.errorMessage

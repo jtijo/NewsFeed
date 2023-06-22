@@ -1,7 +1,6 @@
 package uk.co.atomicmedia.developertest.domain.repositorycontracts
 
 import uk.co.atomicmedia.developertest.domain.model.DomainHeadlineList
-import uk.co.atomicmedia.developertest.domain.model.DomainHeadlineModel
 import uk.co.atomicmedia.developertest.domain.model.DomainStoryModel
 import uk.co.atomicmedia.developertest.domain.model.sealed.DomainSealedResponse
 

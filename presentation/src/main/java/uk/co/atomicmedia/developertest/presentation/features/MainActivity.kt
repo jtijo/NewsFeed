@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-                NavigationControllerScreen.initialise(viewModel = viewModel)
+                NavigationControllerScreen.Initialise(viewModel = viewModel)
             }
         }
     }

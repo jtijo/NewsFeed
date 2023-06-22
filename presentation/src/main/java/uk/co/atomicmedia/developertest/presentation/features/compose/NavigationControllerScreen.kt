@@ -12,7 +12,7 @@ import java.lang.ref.WeakReference
 
 object NavigationControllerScreen {
     @Composable
-    fun initialise(viewModel: NewsFeedViewModel) {
+    fun Initialise(viewModel: NewsFeedViewModel) {
         val navController = rememberNavController()
         val navControllerWeakReference = WeakReference(navController)
         navControllerWeakReference.get()?.let { navigationController ->
@@ -23,11 +23,11 @@ object NavigationControllerScreen {
             {
                 composable(route = NAV_SPLASH_SCREEN)
                 {
-                    launchSplashScreen(navigationController = navigationController)
+                    LaunchSplashScreen(navigationController = navigationController)
                 }
                 composable(route = NAV_HEADLINE_LIST)
                 {
-                    launchHeadlineListScreen(
+                    LaunchHeadlineListScreen(
                         viewModel = viewModel,
                         navigationController = navigationController
                     )
@@ -36,7 +36,7 @@ object NavigationControllerScreen {
                 { backStackEntry ->
                     viewModel.headlineId =
                         backStackEntry.arguments?.getString(STORY_ID)
-                    launchHeadlineStoryScreen(
+                    LaunchHeadlineStoryScreen(
                         viewModel = viewModel,
                         navigationController = navigationController
                     )
@@ -47,7 +47,7 @@ object NavigationControllerScreen {
 
 
     @Composable
-    private fun launchSplashScreen(navigationController: NavHostController) {
+    private fun LaunchSplashScreen(navigationController: NavHostController) {
         SplashScreen.ShowSplashScreen {
             navigationController.navigate(route = NAV_HEADLINE_LIST)
             {
@@ -60,7 +60,7 @@ object NavigationControllerScreen {
     }
 
     @Composable
-    private fun launchHeadlineListScreen(
+    private fun LaunchHeadlineListScreen(
         viewModel: NewsFeedViewModel,
         navigationController: NavHostController
     ) {
@@ -74,7 +74,7 @@ object NavigationControllerScreen {
     }
 
     @Composable
-    private fun launchHeadlineStoryScreen(
+    private fun LaunchHeadlineStoryScreen(
         viewModel: NewsFeedViewModel,
         navigationController: NavHostController
     ) {

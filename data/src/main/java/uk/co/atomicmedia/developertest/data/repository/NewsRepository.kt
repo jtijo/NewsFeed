@@ -63,7 +63,7 @@ class NewsRepository @Inject constructor(
         return storyEntity?.let { mapper.mapDomainStoryModel(it) }
     }
 
-    private suspend fun handleException(exception: Exception): DomainErrorResponse {
+    private  fun handleException(exception: Exception): DomainErrorResponse {
         return when (exception) {
             is ApiException.HttpError -> {
                 DomainErrorResponse(

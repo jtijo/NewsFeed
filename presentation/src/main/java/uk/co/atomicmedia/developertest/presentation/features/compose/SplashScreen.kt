@@ -40,7 +40,7 @@ object SplashScreen {
                     onNavigateToProductList.invoke()
                 }
             }
-            val description = "Atomic Media Test - Tijo Jospeh"
+            val description = stringResource(id = R.string.test_details)
             Text(
                 text = description,
                 color = Color.White,
