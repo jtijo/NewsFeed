@@ -6,8 +6,9 @@ import uk.co.atomicmedia.developertest.data.api.ApiException
 import uk.co.atomicmedia.developertest.data.api.dto.StoryDto
 import uk.co.atomicmedia.developertest.data.api.dto.HeadlineDto
 import uk.co.atomicmedia.developertest.data.mockStories
+import javax.inject.Inject
 
-class CoroutineNewsApi : ICoroutineNewsApi {
+class CoroutineNewsApi @Inject constructor(): ICoroutineNewsApi {
 
     override suspend fun getNewsHeadlines(): List<HeadlineDto> {
         delay(500)

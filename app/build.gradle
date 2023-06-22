@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.dishwasherapp'
+    namespace 'uk.co.atomicmedia.developertest'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.dishwasherapp"
+        applicationId "uk.co.atomicmedia.developertest"
         minSdk 26
         targetSdk 33
         versionCode 1

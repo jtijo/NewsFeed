@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NewsFeedApp</string>
+    <string name="no_headlines_available">No headlines available</string>
+    <string name="error">Error</string>
+    <string name="headlines">Main Headlines</string>
+    <string name="headline_story">Headline Story</string>
+    <string name="back_to_headline_list">Back to headline list</string>
+    <string name="no_headline_story_available">No headline details available</string>
+</resources>
