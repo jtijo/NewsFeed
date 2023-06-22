@@ -1,11 +1,13 @@
 package uk.co.atomicmedia.developertest.data.api.callback
 
 
-import uk.co.atomicmedia.developertest.data.HAS_CONNECTION
+
 import uk.co.atomicmedia.developertest.data.api.ApiException
 import uk.co.atomicmedia.developertest.data.api.dto.StoryDto
 import uk.co.atomicmedia.developertest.data.api.dto.HeadlineDto
-import uk.co.atomicmedia.developertest.data.mockStories
+import uk.co.atomicmedia.developertest.data.utils.HAS_CONNECTION
+import uk.co.atomicmedia.developertest.data.utils.mockStories
+
 import kotlin.concurrent.thread
 
 class CallbackNewsApi : ICallbackNewsApi {
