@@ -41,7 +41,6 @@ object HeadlineStoryScreen {
         ListenAppLifeCycle(intentionListener = intentionListener)
         ObserveUIState(
             currentUIStateStateFlow = currentUIStateFlow,
-            intentionListener = intentionListener,
             onBackPressed = onBackPressed
         )
     }
@@ -64,7 +63,6 @@ object HeadlineStoryScreen {
     @Composable
     private fun ObserveUIState(
         currentUIStateStateFlow: StateFlow<NewsFeedViewModel.CurrentUIState>,
-        intentionListener: BaseIntentionListener<NewsFeedViewModel.Intention>,
         onBackPressed: () -> Unit
     ) {
         currentUIStateStateFlow.collectAsState().value.let { currentUIState ->

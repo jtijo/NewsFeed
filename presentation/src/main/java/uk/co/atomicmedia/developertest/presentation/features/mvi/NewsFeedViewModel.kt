@@ -55,7 +55,7 @@ class NewsFeedViewModel @Inject constructor(
                 triggerGetHeadlineStory()
             }
             is Intention.Reset -> {
-
+                reset()
             }
         }
     }
@@ -107,6 +107,9 @@ class NewsFeedViewModel @Inject constructor(
     }
 
     private fun reset() {
-
+        headlineId = null
+        useCaseScope.launch {
+            _newsFeedStateFlow.emit(CurrentUIState.Loading)
+        }
     }
 }

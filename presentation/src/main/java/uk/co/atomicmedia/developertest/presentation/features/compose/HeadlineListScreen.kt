@@ -40,10 +40,10 @@ object HeadlineListScreen {
         intentionListener: BaseIntentionListener<NewsFeedViewModel.Intention>,
         onNavigateToHeadlineStory: (String) -> Unit
     ) {
+        ShowProgressBar()
         ListenAppLifeCycle(intentionListener = intentionListener)
         ObserveUIState(
             currentUIStateStateFlow = currentUIStateFlow,
-            intentionListener = intentionListener,
             onNavigateToHeadlineStory = onNavigateToHeadlineStory
         )
     }
@@ -66,7 +66,6 @@ object HeadlineListScreen {
     @Composable
     private fun ObserveUIState(
         currentUIStateStateFlow: StateFlow<NewsFeedViewModel.CurrentUIState>,
-        intentionListener: BaseIntentionListener<NewsFeedViewModel.Intention>,
         onNavigateToHeadlineStory: (String) -> Unit
     ) {
         currentUIStateStateFlow.collectAsState().value.let { currentUIState ->
@@ -91,7 +90,7 @@ object HeadlineListScreen {
     }
 
     @Composable
-    private fun ColumnScope.ShowTopAppBar() {
+    private fun ShowTopAppBar() {
         TopAppBar(backgroundColor = Color.Black) {
             Text(
                 text = stringResource(id = R.string.headlines),
@@ -137,7 +136,7 @@ object HeadlineListScreen {
     }
 
     @Composable
-    private fun LazyGridItemScope.ShowHeadline(
+    private fun ShowHeadline(
         headline: PresentationHeadlineModel,
         onNavigateToHeadlineStory: (String) -> Unit
     ) {

@@ -10,12 +10,10 @@ import uk.co.atomicmedia.developertest.data.utils.ROOM_DATABASE_NAME
 
 @Database(entities = [StoryEntity::class, HeadlineEntity::class], version = 1, exportSchema = false)
 abstract class NewsFeedDatabase : RoomDatabase() {
-
     abstract fun getNewsFeedDao(): NewsFeedDao
 
     companion object {
         private var INSTANCE: NewsFeedDatabase? = null
-
         fun getNewsFeedDatabase(context: Context): NewsFeedDatabase? {
             if (INSTANCE == null) {
                 synchronized(NewsFeedDatabase::class)
