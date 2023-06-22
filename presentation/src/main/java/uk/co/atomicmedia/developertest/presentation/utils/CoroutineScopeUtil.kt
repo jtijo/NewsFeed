@@ -5,7 +5,7 @@ import kotlinx.coroutines.Dispatchers
 
 object CoroutineScopeUtil {
 
-    val useCaseScopeIO = CoroutineScope(Dispatchers.IO)
+    val useCaseScopeIO = Dispatchers.IO
 
     val useCaseScopeMain = CoroutineScope(Dispatchers.Main)
 }

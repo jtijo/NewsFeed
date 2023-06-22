@@ -9,6 +9,7 @@ import uk.co.atomicmedia.developertest.presentation.utils.CoroutineScopeUtil.use
 import uk.co.atomicmedia.developertest.presentation.utils.CoroutineScopeUtil.useCaseScopeMain
 import javax.inject.Named
 import javax.inject.Singleton
+import kotlin.coroutines.CoroutineContext
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -16,11 +17,9 @@ object PresentationModule {
 
     @Singleton
     @Provides
-    @Named("UseCaseScopeIO")
-    fun providesCoroutineScopeIO(): CoroutineScope = useCaseScopeIO
+    fun providesCoroutineContext(): CoroutineContext = useCaseScopeIO
 
     @Singleton
     @Provides
-    @Named("UseCaseScopeMain")
-    fun providesCoroutineScopeMain(): CoroutineScope = useCaseScopeMain
+    fun providesCoroutineScope(): CoroutineScope = useCaseScopeMain
 }
